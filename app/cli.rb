@@ -63,6 +63,7 @@ end
 ####
 def run_method
   prompt = TTY::Prompt.new
+
   banner
   space
   greeting

@@ -1,3 +1,8 @@
+require 'pry'
+require_relative '../app/models/match.rb'
+require_relative '../app/models/opponent.rb'
+require_relative '../app/models/user.rb'
+
 
 def banner
   system "clear"
@@ -121,6 +126,10 @@ def run_method
   space
   second_intro_question(intro_answer2)
 
+  # user_guess = prompt.select('Select your weapon', ["Rock", "Paper", "Scissors"])
+  # user_guess = gets.chomp
+  rsp_match(current_user)
+  # binding.pry
   # FIRST FIGHT (w/ Geoff) #
   # first_fight_question1 = prompt.select('What do you do?', ["Engage directly", "Sneak attack", "Run away"])
 

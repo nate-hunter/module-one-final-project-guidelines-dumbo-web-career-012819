@@ -2,6 +2,7 @@
 
 def second_fight_question1
   prompt = TTY::Prompt.new
+  sleep(3)
   second_fight_answer1 = prompt.select('What do you do? You have 5 seconds to respond!', ["Dodge", "Block"])
 end
 

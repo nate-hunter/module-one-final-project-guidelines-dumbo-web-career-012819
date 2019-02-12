@@ -10,15 +10,13 @@ def game_rules
   }
 end
 
-def rsp_match(current_user)
+def rsp_match(current_user, user_num, opp_num)
   prompt = TTY::Prompt.new
-  # opponent_guesses = ["Rock", "Paper", "Scissors"]
-  # opp_guess = opponent_guesses.sample
 
   opponent_score = 0
   user_score = 0
 
-  until opponent_score == 3 || user_score == 3
+  until opponent_score == opp_num || user_score == user_num
 
     user_guess = prompt.select('Select your weapon', ["Rock", "Paper", "Scissors"])
     opponent_guess = ["Rock", "Paper", "Scissors"].sample
@@ -29,24 +27,26 @@ def rsp_match(current_user)
       puts "opponent wins".upcase
     elsif game_rules[user_guess.to_sym] == opponent_guess
       user_score += 1
-      puts "#{current_user.name} wins".upcase
+      puts "#{current_user.name} wins!!".upcase
     else
       puts "tie game".upcase
     end
 
     space
-    puts "#{current_user.name} chose #{user_guess}"
-    puts "Opponent chose #{opponent_guess}"
+    puts "#{current_user.name} chose: #{user_guess}"
+    puts "Opponent chose: #{opponent_guess}"
     space
-    puts "  ___                     _     ___                  _
- / __|  _ _ _ _ _ ___ _ _| |_  / __| __ ___ _ _ ___ (_)
-| (_| || | '_| '_/ -_) ' \\  _| \\__ \\/ _/ _ \\ '_/ -_) _
- \\___\\_,_|_| |_| \\___|_||_\\__| |___/\\__\\___/_| \\___ (_)"
+    puts "====================================================="
+    puts "  ___                     _     ___
+ / __|  _ _ _ _ _ ___ _ _| |_  / __| __ ___ _ _ ___
+| (_| || | '_| '_/ -_) ' \\  _| \\__ \\/ _/ _ \\ '_/ -_) O
+ \\___\\_,_|_| |_| \\___|_||_\\__| |___/\\__\\___/_| \\___  O"
+    space
+    puts "====================================================="
     space
     puts "#{current_user.name} - #{user_score}"
     puts "Opponent - #{opponent_score}"
     space
-
   end
-
+  user_score
 end

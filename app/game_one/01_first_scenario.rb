@@ -1,17 +1,20 @@
 ## FIRST SCENARIO - FIGHT ##
 
-def first_scenario_one_question(answer1)
+def first_scenario_question_one(answer1)
+  puts "====================================================="
   if answer1 == "Go investigate"
     system "clear"
     puts "You go down the mountain and see a figure in the distance."
   else
     puts "Sweet dreams, the end."
-    puts " "
-    exit!
+    sleep(2)
+    banner
+    welcome
   end
 end
 
-def second_scenario_one_question(answer2)
+def first_scenario_question_two(answer2)
+  puts "====================================================="
   if answer2 == "Yes"
     system "clear"
     puts "You come across the figure and he is taking a leak. He’s a fire nation soldier."
@@ -21,7 +24,6 @@ def second_scenario_one_question(answer2)
     prompt = TTY::Prompt.new
 
     first_fight_answer1 = prompt.select('What do you do?', ["Engage", "Sneak attack", "Run"])
-    space
     first_fight_question1(first_fight_answer1)
 
   else
@@ -46,53 +48,43 @@ def first_fight_question1(first_fight_answer1)
   end
 end
 
-## FIGHT ONE ##
-
-def game_rules
-  {
-    'Rock': "Scissors",
-    'Paper': "Rock",
-    'Scissors': "Paper"
-  }
+def create_match_test(user_id, opponent_id=nil, location)
+  create_match = Match.create(user_id: user_id, opponent_id: opponent_id, location: location, user_win: true)
+  create_match
 end
 
-def rsp_match_one(current_user)
-  prompt = TTY::Prompt.new
-  # opponent_guesses = ["Rock", "Paper", "Scissors"]
-  # opp_guess = opponent_guesses.sample
+def create_match(user_id, opponent_id=nil, location)
 
-  opponent_score = 0
-  user_score = 0
+  match_created = Match.create(user_id: user_id, opponent_id: 1, location: location, user_win: true)
+  match_created
+end
 
-  until opponent_score == 2 || user_score == 2
-
-    user_guess = prompt.select('Select your weapon', ["Rock", "Paper", "Scissors"])
-    opponent_guess = ["Rock", "Paper", "Scissors"].sample
-
-    system 'clear'
-    if game_rules[opponent_guess.to_sym] == user_guess
-      opponent_score += 1
-      puts "opponent wins".upcase
-    elsif game_rules[user_guess.to_sym] == opponent_guess
-      user_score += 1
-      puts "#{current_user.name} wins".upcase
-    else
-      puts "tie game".upcase
-    end
-
-    space
-    puts "#{current_user.name} chose #{user_guess}"
-    puts "Opponent chose #{opponent_guess}"
-    space
-    puts "  ___                     _     ___                  _
- / __|  _ _ _ _ _ ___ _ _| |_  / __| __ ___ _ _ ___ (_)
-| (_| || | '_| '_/ -_) ' \\  _| \\__ \\/ _/ _ \\ '_/ -_) _
- \\___\\_,_|_| |_| \\___|_||_\\__| |___/\\__\\___/_| \\___ (_)"
-    space
-    puts "#{current_user.name} - #{user_score}"
-    puts "Opponent - #{opponent_score}"
-    space
-
+def update_match(match, fight_one_score, num_to_win)
+  if fight_one_score == num_to_win
+    match.user_win = true
+  elsif fight_one_score < num_to_win
+    match.user_win = false
+    puts "You did not win. Peace buddy."
+    puts " "
   end
+  match
+end
 
+def transition_to_scene_two(updated_match)
+  prompt = TTY::Prompt.new
+
+  if updated_match.user_win == true
+    sleep (2)
+    system 'clear'
+    puts "====================================================="
+    puts "Congrats on your success thus far, but your village still needs you."
+  else
+    # puts "Would you like to star a new game?"
+    losing_answer = prompt.select('What would you like to do?', ["Main Menu", "Exit"])
+    if losing_answer == "Main Menu"
+      welcome
+    elsif losing_answer == "Exit"
+      goodbye
+    end
+  end
 end

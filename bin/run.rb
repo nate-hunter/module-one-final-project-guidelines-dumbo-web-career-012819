@@ -1,4 +1,5 @@
 require_relative '../config/environment'
+require_relative '../db/seeds'
 require 'pry'
 
 # # 1st Opponent:
@@ -11,5 +12,9 @@ require 'pry'
 # # Final Opponent:
 # shinu = Opponent.create(name: "General Shinu", element: "Fire", special_move: 1)
 
-
+banner
+welcome
+greeting
 run_method
+
+#run_app

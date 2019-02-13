@@ -2,24 +2,25 @@ class User < ActiveRecord::Base
   has_many :matches
   has_many :opponents, through: :matches
 
-  # def game_rules
-  #   {
-  #     'Rock': "Scissors",
-  #     'Paper': "Rock",
-  #     'Scissors': "Paper"
-  #   }
-  # end
+  def score(game_points=0)
+    score = self.health + self.attack + self.defense + game_points
+    score
+  end
 
-  # def rsp_match(guess)
-  #   opponent_guesses = ["Rock", "Paper", "Scissors"]
-  #   opp_guess = opponent_guesses.sample
-  #
-  #   if game_rules[opp_guess.to_sym] == guess
-  #     puts 'opponent wins'
-  #   elsif game_rules[guess.to_sym] == opp_guess
-  #     puts '#{self.name} wins'
-  #   else
-  #     puts 'tie game'
-  #   end
-  # end
+  def update_score(score)
+    self.update(total_score: score)
+  end
+
+  def self.highest_score
+    maximum('total_score')
+  end
+
+  def self.user_with_highest_score
+    where("total_score = ?", self.highest_score).first
+  end
+
+  def self.worthy_users
+    where('total_score > ?', 100)
+  end
+
 end

@@ -148,6 +148,7 @@ def run_method
   puts "That's it for now."
   sleep(2)
   system 'clear'
+  banner
   welcome
 
 

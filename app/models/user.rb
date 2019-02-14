@@ -2,9 +2,12 @@ class User < ActiveRecord::Base
   has_many :matches
   has_many :opponents, through: :matches
 
-  def score(game_points=0)
-    score = self.health + self.attack + self.defense + game_points
-    score
+  def score(match_points=0)
+    health = self.health
+    attack = self.attack
+    defense = self.defense
+    self.total_score = health + attack + defense + match_points
+    self.total_score
   end
 
   def update_score(score)

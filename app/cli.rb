@@ -94,7 +94,7 @@ def run_method
 
   current_game_user_score = current_user.total_score += game_two_score
 
-  game_match = game_match.update(match_score: current_game_user_score)
+  game_match.update(match_score: current_game_user_score)
 
   ### DISPLAY STATS ###
   puts " "
@@ -108,13 +108,45 @@ def run_method
 ####################
 #  THIRD SCENARIO  #
 ####################
-  game_match
-  binding.pry
-
   third_scenario(current_user, game_match)
 
+#####################
+#  FOURTH SCENARIO  #
+#####################
+  sleep(3)
+  fourth_scenario(current_user, game_match)
+
+#####################
+#  FIFTH SCENARIO  #
+#####################
+  final_scenario(current_user)
+
+  level_boss = Opponent.find_by(name: "General Shinu")
+
+  number_user_to_win_s5 = 5
+  number_opp_to_win_s5 = 5
+  game_five_score = 0
+  fight_five_score = rsp_match(current_user, level_boss, number_user_to_win_s5, number_opp_to_win_s5) ## RSP Happening; saved as a variable to use score ##
+
+  ### UPDATE MATCH TABLE ###
+  game_match = update_match_win_true_or_false(game_match, fight_five_score, number_user_to_win_s5)
+
+  game_five_score += fight_five_score   ## Fight score added to game 1 score.
+
+  current_game_user_score = current_user.total_score + game_five_score
+
+  game_match.update(match_score: current_game_user_score)
+
+  ### DISPLAY STATS ###
+  puts " "
+  puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+  puts "You scored #{game_five_score} point(s)."
+  puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+  puts "You have #{current_game_user_score} total point(s)."
+  puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+
   puts "That's it for now."
-  sleep(2)
+  sleep(5)
   system 'clear'
   welcome
 

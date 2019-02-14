@@ -1,4 +1,4 @@
-def fourth_scenario(current_user)
+def fourth_scenario(current_user, game_match)
 
   ##################################
   ############ STRINGS #############
@@ -51,6 +51,7 @@ def fourth_scenario(current_user)
     follow_sounds_prompt(current_user)
   end
 
+#***
   def break_window(current_user)
     system "clear"
       current_user.health -= 5
@@ -68,10 +69,11 @@ def fourth_scenario(current_user)
     sleep 1
     puts "but you can still hear the villagers."
     sleep 1
-    
+
     follow_sounds_prompt(current_user)
   end
 
+#***
   def follow_sounds(current_user)
     system "clear"
       current_user.health -= 5
@@ -87,6 +89,7 @@ def fourth_scenario(current_user)
     villagers_scared_prompt(current_user)
   end
 
+#***
   def burning_pillar(current_user)
     system "clear"
       current_user.health -= 5
@@ -104,10 +107,11 @@ def fourth_scenario(current_user)
     sleep 1
     puts "You have 3 seconds to respond"
     sleep 1
-    
+
     burning_pillar_prompt(current_user)
   end
 
+#***
   def burning_pillar_with_villagers(current_user)
     system "clear"
       current_user.health -= 5
@@ -123,10 +127,11 @@ def fourth_scenario(current_user)
     sleep 1
     puts "You have 3 seconds to respond"
     sleep 1
-    
+
     burning_pillar_with_villagers_prompt(current_user)
   end
 
+#***
   def jump(current_user)
     system "clear"
       current_user.health -= 10
@@ -148,9 +153,10 @@ def fourth_scenario(current_user)
 
   # def jump_with_villagers
   #   system "clear"
-    
+
   # end
 
+#***
   def push_villagers(current_user)
     system "clear"
       current_user.health -= 10
@@ -160,10 +166,11 @@ def fourth_scenario(current_user)
 
     puts "You push the villagers out of the way and the pillar crashes between you and the villagers."
     sleep 1
-    
+
     push_villagers_prompt(current_user)
   end
 
+#***
   def block(current_user)
     system "clear"
       current_user.health -= 20
@@ -181,6 +188,7 @@ def fourth_scenario(current_user)
     block_prompt(current_user)
   end
 
+#***
   def block_with_villagers(current_user)
     system "clear"
       current_user.health = 100
@@ -206,10 +214,11 @@ def fourth_scenario(current_user)
     puts "You thank them for the gifts and continue your way through the village."
     sleep 1
 
-    
+
     # block_with_villagers_prompt
   end
 
+#***
   def move_pillar(current_user)
     system "clear"
       current_user.health -= 10
@@ -241,6 +250,7 @@ def fourth_scenario(current_user)
     sleep 1
   end
 
+#***
   def back_to_villagers(current_user)
     system "clear"
       current_user.health -= 5
@@ -254,6 +264,7 @@ def fourth_scenario(current_user)
     back_to_villagers_prompt(current_user)
   end
 
+#***
   def check_exit(current_user)
     system "clear"
       current_user.health -= 5
@@ -269,6 +280,7 @@ def fourth_scenario(current_user)
     check_exit_prompt(current_user)
   end
 
+#***
   def tell_villagers_to_follow(current_user)
     system "clear"
       current_user.health = 100
@@ -292,6 +304,7 @@ def fourth_scenario(current_user)
 
   end
 
+#***
   def destroy_pillar(current_user)
     system "clear"
       current_user.health -= 10
@@ -324,6 +337,7 @@ def fourth_scenario(current_user)
     sunlight_prompt(current_user)
   end
 
+#***
   def go_outside(current_user)
       current_user.health = 100
       current_user.defense += 10
@@ -345,13 +359,14 @@ def fourth_scenario(current_user)
 
   end
 
+#***
   def kick_door(current_user)
     system "clear"
       current_user.health = 100
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
-      
+
     puts user_stats(current_user)
 
     puts "You kick the door a few times and it opens. You finally make it out of the temple."
@@ -364,6 +379,7 @@ def fourth_scenario(current_user)
     puts "You thank them for the gifts and continue your way through the village."
   end
 
+#***
   def tackle_door(current_user)
     system "clear"
       current_user.health -= 5
@@ -377,6 +393,7 @@ def fourth_scenario(current_user)
     tackle_door_prompt(current_user)
   end
 
+#***
   def tackle_door_again(current_user)
     system "clear"
       current_user.health -= 15
@@ -414,7 +431,7 @@ def fourth_scenario(current_user)
     puts "You frantically try to put the fire out to no avail."
     sleep 1
     puts "Eventually the flames engulf you."
-    sleep 1 
+    sleep 1
     puts "You pass out. Game over."
     sleep 1
   end
@@ -456,13 +473,13 @@ def fourth_scenario(current_user)
   # fin = Time.now + 3
   # while Time.now < fin
   #   fin - Time.now
-  #   sleep 1 
+  #   sleep 1
   #   return "Too late"
   # end
   # puts "time end"
-  
 
-  
+
+
 
   ##################################
   ########### ARGUMENTS ############
@@ -508,11 +525,11 @@ def fourth_scenario(current_user)
     run_into_temple_answer = prompt.select('What do you do?', ["Try to break the lock", "Kick down the door", "Look for another way in"])
 
     run_into_temple_prompt(run_into_temple_answer, current_user)
-    
+
   end
 
   def run_into_temple_prompt(run_into_temple_answer, current_user)
-    
+
     if run_into_temple_answer == "Try to break the lock"
       break_door_lock(current_user)
       break_temple_lock_prompt(current_user)
@@ -538,7 +555,7 @@ def fourth_scenario(current_user)
   ##################################
 
   def break_temple_lock(break_temple_lock_answer, current_user)
-    
+
     if break_temple_lock_answer == "Continue trying"
       system "clear"
       puts user_stats(current_user)
@@ -564,7 +581,7 @@ def fourth_scenario(current_user)
   end
 
   def kick_temple_door(kick_temple_door_answer, current_user)
-
+#***
     if kick_temple_door_answer == "Continue trying"
       system "clear"
       current_user.health -= 10
@@ -671,16 +688,16 @@ def fourth_scenario(current_user)
   end
 
   def burning_pillar_method(burning_pillar_answer, current_user)
-    
+
     if burning_pillar_answer == "Jump out of the way"
       jump(current_user)
-    else 
+    else
       block(current_user)
     end
   end
 
   def burning_pillar_with_villagers_method(burning_pillar_with_villagers_answer, current_user)
-    
+
     if burning_pillar_with_villagers_answer == "Jump out of the way"
       jump(current_user)
 
@@ -766,7 +783,7 @@ def fourth_scenario(current_user)
   end
 
   # def block_with_villagers_method(block_with_villagers_answer)
-    
+
   # end
 
   ##################################

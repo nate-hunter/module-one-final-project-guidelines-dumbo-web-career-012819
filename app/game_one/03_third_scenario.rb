@@ -1,8 +1,6 @@
 def third_scenario(current_user, game_match)
 
-  game_match
-  binding.pry
-  
+
 	system "clear"
 	# user_stat_table(current_user)
 	puts "You go inside the village and see three items on the ground."
@@ -64,7 +62,7 @@ def third_scenario(current_user, game_match)
 		system "clear"
 		puts "Without hesitating, you leap towards the soldier and engage in a battle!"
 		sleep 1
-    binding.pry
+    # binding.pry
 		attack_prompt(current_user, game_match)
 
 	end

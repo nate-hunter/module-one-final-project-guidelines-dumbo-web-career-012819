@@ -12,10 +12,10 @@ def final_scenario(current_user)
 		sleep 1
 		puts "'It seems the only way to stop you, is for me to take you on myself.'"
 		sleep 1
-		
+
 
 	# end
-	
+
 
     prompt = TTY::Prompt.new
     begin_answer = prompt.select(' ', ["Begin Final Match"])
@@ -30,7 +30,7 @@ def final_scenario(current_user)
 #################################################
 #################################################
 #################################################
-	
+
 	# def next_prompt(current_user)
 	# 	prompt = TTY::Prompt.new
 	# 	next_answer = prompt.select(' ', ["Continue moving along"])
@@ -42,10 +42,10 @@ def final_scenario(current_user)
 #################################################
 #################################################
 
-	def start_final_method(start_final_answer, current_user)
+	def start_final_method(start_final_answer, current_user, game_match)
 		# rps
 	end
 
 
-	start_final(current_user)
+	# start_final(current_user)
 end

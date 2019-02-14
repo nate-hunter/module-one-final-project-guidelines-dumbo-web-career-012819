@@ -5,7 +5,7 @@ end
 
 def update_match_win_true_or_false(match, fight_score, num_to_win)
   if fight_score == num_to_win
-    binding.pry
+    # binding.pry
     match.user_win = true
   elsif fight_score < num_to_win
     match.user_win = false

@@ -17,7 +17,6 @@ def third_scenario(current_user)
 	def bread(current_user)
 		system "clear"
 		puts "You've successfully replenished your health!"
-		sleep 1
 
 		next_prompt(current_user)
 	end
@@ -27,7 +26,6 @@ def third_scenario(current_user)
 		puts "You've gained a new weapon!"
 		sleep 1
 		puts "Your attack strength successfully increased!"
-		sleep 1
 
 		next_prompt(current_user)
 	end
@@ -37,7 +35,6 @@ def third_scenario(current_user)
 		puts "You've gained a new shield!"
 		sleep 1
 		puts "Your defensive strength successfully increased!"
-		sleep 1
 		
 		next_prompt(current_user)
 	end
@@ -67,7 +64,7 @@ def third_scenario(current_user)
 		puts "Without hesitating, you leap towards the soldier and engage in a battle!"
 		sleep 1
 
-		engage_soldier_prompt(current_user) 
+		attack_prompt(current_user) 
 	end
 ################################################################################################
 	def call_soldier(current_user)
@@ -121,11 +118,38 @@ def third_scenario(current_user)
 		system "clear"
 		puts "You successfully dodge the attack!"
 		sleep 1
-		puts ""
+
+		counter_attack_prompt(current_user)
 	end
 
 	def block_attack(current_user)
 		system "clear"
+		puts "You blocked the attack with your bending!"
+		sleep 1
+
+		counter_attack_prompt(current_user)
+	end
+
+	def attack(current_user)
+		system "clear"
+		puts "You attack him!"
+		sleep 1
+
+		attack_prompt(current_user)
+	end
+
+	def run_away_after_attack(current_user)
+		system "clear"
+		puts "His attack was too powerful and you're not sure if you can win."
+		sleep 1
+		puts "You decide the best course of action is to run away."
+		sleep 1
+		puts "You start to run, but the soldier attacks again and you're hit."
+		sleep 1
+		puts "However, it was just a graze and you successfully get away"
+		sleep 1
+
+		next_after_logic_prompt(current_user)
 	end
 
 ##############################
@@ -158,6 +182,27 @@ def third_scenario(current_user)
 		call_soldier_answer = prompt.select('What do you do?', ["Dodge the attack", "Block with your bending"])
 
 		call_soldier_method(call_soldier_answer, current_user)
+	end
+
+	def counter_attack_prompt(current_user)
+		prompt = TTY::Prompt.new
+		counter_attack_answer = prompt.select('What do you do?', ["Attack", "Run away"])
+
+		counter_attack_method(counter_attack_answer, current_user)
+	end
+
+	def attack_prompt(current_user, opponent, user_num, opp_num)
+		rsp_match(current_user, opponent, user_num, opp_num)
+
+		game_one_score = 0  ## This variable used to track game 1's score
+		opponent4 = Opponent.find_by(name: "Captain Yon Rha")
+		fight_one_score = rsp_match(current_user, opponent4, 3, 4) ## RSP Happening; saved as a variable to use score ##
+		game_one_score += fight_one_score   ## Fight score added to game 1 score.
+		### CREATE A MATCH INSTANCE ###
+		scene3_match1 = create_match(current_user.id, "Game 1, Scene 3")    # new match created
+		match1_id = scene1_match1.id
+
+		updated_match = update_match(scene1_match1, fight_one_score, 3)
 	end
 
 ##############################
@@ -205,6 +250,14 @@ def third_scenario(current_user)
 			dodge_attack(current_user)
 		else
 			block_attack(current_user)
+		end
+	end
+
+	def counter_attack_method(counter_attack_answer, current_user)
+		if counter_attack_answer == "Attack"
+			attack(current_user)
+		else
+			run_away_after_attack(current_user)
 		end
 	end
 

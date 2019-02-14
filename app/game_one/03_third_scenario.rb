@@ -2,7 +2,8 @@ def third_scenario(current_user, game_match)
 
 
 	system "clear"
-	# user_stat_table(current_user)
+	puts user_stats(current_user)
+
 	puts "You go inside the village and see three items on the ground."
 	sleep 1
 
@@ -15,31 +16,48 @@ def third_scenario(current_user, game_match)
 
 	def bread(current_user, game_match)
 		system "clear"
+	      current_user.health = 100
+	      current_user.save
+		puts user_stats(current_user)
+
 		puts "You've successfully replenished your health!"
+		puts "(Full health regen)".colorize(:green)
 
 		next_prompt(current_user, game_match)
 	end
 
 	def sword(current_user, game_match)
 		system "clear"
+	      current_user.attack += 10
+	      current_user.save
+		puts user_stats(current_user)
+
 		puts "You've gained a new weapon!"
 		sleep 1
 		puts "Your attack strength successfully increased!"
+		puts "(+10 Attack)".colorize(:green)
 
 		next_prompt(current_user, game_match)
 	end
 
 	def shield(current_user, game_match)
 		system "clear"
+	      current_user.defense += 10
+	      current_user.save
+		puts user_stats(current_user)
+
 		puts "You've gained a new shield!"
 		sleep 1
 		puts "Your defensive strength successfully increased!"
+		puts "(+10 Defense!)".colorize(:green)
 
 		next_prompt(current_user, game_match)
 	end
 
 	def notice_soldier(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "As you make your way through the village, you see rubble and burning buildings all around."
 		sleep 1
 		puts "You hear sounds of people fighting in the distance."
@@ -60,6 +78,8 @@ def third_scenario(current_user, game_match)
 ################################################################################################
 	def engage_soldier(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "Without hesitating, you leap towards the soldier and engage in a battle!"
 		sleep 1
     # binding.pry
@@ -69,6 +89,8 @@ def third_scenario(current_user, game_match)
 ################################################################################################
 	def call_soldier(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "You call out to the soldier to stop!"
 		sleep 1
 		puts "Disgruntled, he drops the villager and attacks you immediately"
@@ -80,6 +102,8 @@ def third_scenario(current_user, game_match)
 
 	def logic_with_soldier(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "Being a pacifist, you calmly walk up to the soldier and begin to reason with him."
 		sleep 1
 		puts "As he holds onto the villager, you calmly de-escalate the situation."
@@ -102,6 +126,8 @@ def third_scenario(current_user, game_match)
 
 	def run_away(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "The villager isn't worth your time."
 		sleep 1
 		puts "Not to mention, the soldier is quite large and would easily defeat you."
@@ -116,6 +142,8 @@ def third_scenario(current_user, game_match)
 
 	def dodge_attack(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "You successfully dodge the attack!"
 		sleep 1
 
@@ -124,6 +152,7 @@ def third_scenario(current_user, game_match)
 
 	def block_attack(current_user, game_match)
 		system "clear"
+		user_stats(current_user)
 		puts "You blocked the attack with your bending!"
 		sleep 1
 
@@ -132,6 +161,8 @@ def third_scenario(current_user, game_match)
 
 	def attack(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "You attack him!"
 		sleep 1
 
@@ -140,6 +171,8 @@ def third_scenario(current_user, game_match)
 
 	def run_away_after_attack(current_user, game_match)
 		system "clear"
+		puts user_stats(current_user)
+
 		puts "His attack was too powerful and you're not sure if you can win."
 		sleep 1
 		puts "You decide the best course of action is to run away."

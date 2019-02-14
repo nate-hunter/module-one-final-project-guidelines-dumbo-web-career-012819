@@ -37,6 +37,8 @@ def fourth_scenario(current_user, game_match)
 
   def go_around(current_user)
     system "clear"
+      current_user.health -= 5
+      current_user.save
     puts user_stats(current_user)
 
     puts "The window seems too high to climb. You continue looking for a more suitable entrance."
@@ -47,6 +49,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "but you can still hear the villagers."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     follow_sounds_prompt(current_user)
   end
@@ -69,6 +72,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "but you can still hear the villagers."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     follow_sounds_prompt(current_user)
   end
@@ -85,6 +89,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You follow their cries and find them huddled in a corner."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     villagers_scared_prompt(current_user)
   end
@@ -107,6 +112,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You have 3 seconds to respond"
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     burning_pillar_prompt(current_user)
   end
@@ -127,6 +133,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You have 3 seconds to respond"
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     burning_pillar_with_villagers_prompt(current_user)
   end
@@ -147,6 +154,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "At that moment, you see a glimmer of sunlight in the corner."
     sleep 1
+    puts "(The pillar grazed you. -10 health)".colorize(:red)
 
     jump_prompt(current_user)
   end
@@ -166,6 +174,7 @@ def fourth_scenario(current_user, game_match)
 
     puts "You push the villagers out of the way and the pillar crashes between you and the villagers."
     sleep 1
+    puts "(The pillar grazed you. -10 health)".colorize(:red)
 
     push_villagers_prompt(current_user)
   end
@@ -184,6 +193,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "preventing it from blocking the exit."
     sleep 1
+    puts "(The pillar is heavy. -20 health)".colorize(:red)
 
     block_prompt(current_user)
   end
@@ -213,6 +223,8 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
     sleep 1
+    puts "(Full health regen, +10 Attack, +10 Defense)".colorize(:green)
+    sleep 10
 
 
     # block_with_villagers_prompt
@@ -232,6 +244,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You try to find a way around, but it’s hopeless."
     sleep 1
+    puts "(The pillar is heavy. -10 health)".colorize(:red)
 
     move_pillar_prompt(current_user)
   end
@@ -260,6 +273,7 @@ def fourth_scenario(current_user, game_match)
 
     puts "You go back to look for the villagers. You find them hiding in the same corner."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     back_to_villagers_prompt(current_user)
   end
@@ -276,6 +290,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "Fortunately, there aren't any and the way out seems clear."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     check_exit_prompt(current_user)
   end
@@ -302,6 +317,9 @@ def fourth_scenario(current_user, game_match)
     puts "You thank them for the gifts and continue your way through the village."
     sleep 1
 
+
+    puts "(Full health regen, +10 Attack, +10 Defense)".colorize(:green)
+    sleep 10
   end
 
 #***
@@ -318,6 +336,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "A few seconds later the pillar is destroyed and you can finally guide the villagers to safety."
     sleep 1
+    puts "(The pillar is heavy. -10 health)".colorize(:red)
 
     destroy_pillar_prompt(current_user)
   end
@@ -333,6 +352,7 @@ def fourth_scenario(current_user, game_match)
     sleep 1
     puts "You try opening it but it’s locked shut."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     sunlight_prompt(current_user)
   end
@@ -357,16 +377,19 @@ def fourth_scenario(current_user, game_match)
     puts "You thank them for the gifts and continue your way through the village."
     sleep 1
 
+
+    puts "(Full health regen, +10 Attack, +10 Defense)".colorize(:green)
+    sleep 10
   end
 
 #***
   def kick_door(current_user)
     system "clear"
+
       current_user.health = 100
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
-
     puts user_stats(current_user)
 
     puts "You kick the door a few times and it opens. You finally make it out of the temple."
@@ -377,6 +400,10 @@ def fourth_scenario(current_user, game_match)
     puts "As a token of their gratitude, they give you some bread and gloves."
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
+
+
+    puts "(Full health regen, +10 Attack, +10 Defense)".colorize(:green)
+    sleep 10
   end
 
 #***
@@ -389,6 +416,7 @@ def fourth_scenario(current_user, game_match)
 
     puts "You tackle the door with your shoulder a few times but it doesn’t budge."
     sleep 1
+    puts "(You're inside a burning building. -5 health)".colorize(:red)
 
     tackle_door_prompt(current_user)
   end
@@ -403,6 +431,7 @@ def fourth_scenario(current_user, game_match)
 
     puts "You tackle the door one last time and dislocate your shoulder."
     sleep 1
+    puts "You dislocate your arm. -15 health)".colorize(:red)
 
     tackle_door_again_prompt(current_user)
   end
@@ -597,6 +626,7 @@ def fourth_scenario(current_user, game_match)
       sleep 1
       puts "You give up trying to kick the door down."
       sleep 1
+      puts "(You hurt yourself. -10 health)".colorize(:red)
 
       kick_temple_door_again_prompt(current_user)
 

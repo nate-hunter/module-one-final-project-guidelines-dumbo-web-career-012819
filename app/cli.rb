@@ -113,7 +113,7 @@ def run_method
 #####################
 #  FOURTH SCENARIO  #
 #####################
-  sleep(3)
+  # sleep(3)
   fourth_scenario(current_user, game_match)
 
 #####################
@@ -146,7 +146,7 @@ def run_method
   puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
 
   puts "That's it for now."
-  sleep(5)
+  sleep(2)
   system 'clear'
   welcome
 

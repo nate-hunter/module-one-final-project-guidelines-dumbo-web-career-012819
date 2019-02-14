@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 require_relative '../db/seeds'
 require 'pry'
+require 'colorize'
 
 # # 1st Opponent:
 # geoff = Opponent.create(name: "geoff", element: "Fire", special_move: 0)

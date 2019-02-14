@@ -2,6 +2,8 @@ def final_scenario(current_user)
 
 	# def start_final(current_user)
 		system "clear"
+		
+    puts user_stats(current_user)
 		puts "You leave the temple grounds and go through the village."
 		sleep 1
 		puts "You come across the town square, where you see a lone figure in the distance."

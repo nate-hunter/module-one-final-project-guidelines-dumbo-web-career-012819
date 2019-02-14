@@ -155,7 +155,9 @@ def fourth_scenario(current_user)
 
   def block_with_villagers(current_user)
     system "clear"
-      current_user.health -= 15
+      current_user.health = 100
+      current_user.defense += 10
+      current_user.attack += 10
       current_user.save
     puts "You block the pillar with your bending and hold it up."
     sleep 1
@@ -171,9 +173,6 @@ def fourth_scenario(current_user)
     puts "As a token of their gratitude, they give you some bread and gloves."
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
-      current_user.health = 100
-      current_user.defense += 10
-      current_user.attack += 10
     sleep 1
 
     
@@ -229,6 +228,10 @@ def fourth_scenario(current_user)
   end
 
   def tell_villagers_to_follow(current_user)
+      current_user.health = 100
+      current_user.defense += 10
+      current_user.attack += 10
+      current_user.save
     system "clear"
     puts "You tell the villagers you found a way out and tell them to follow you."
     sleep 1
@@ -240,9 +243,6 @@ def fourth_scenario(current_user)
     puts "As a token of their gratitude, they give you some bread and gloves."
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
-      current_user.health = 100
-      current_user.defense += 10
-      current_user.attack += 10
     sleep 1
 
   end
@@ -274,6 +274,10 @@ def fourth_scenario(current_user)
   end
 
   def go_outside(current_user)
+      current_user.health = 100
+      current_user.defense += 10
+      current_user.attack += 10
+      current_user.save
     system "clear"
     puts "You finally make it outside with the villagers."
     sleep 1
@@ -283,14 +287,15 @@ def fourth_scenario(current_user)
     puts "As a token of their gratitude, they give you some bread and gloves."
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
-      current_user.health = 100
-      current_user.defense += 10
-      current_user.attack += 10
     sleep 1
 
   end
 
   def kick_door(current_user)
+      current_user.health = 100
+      current_user.defense += 10
+      current_user.attack += 10
+      current_user.save
     system "clear"
     puts "You kick the door a few times and it opens. You finally make it out of the temple."
     sleep 1
@@ -300,9 +305,6 @@ def fourth_scenario(current_user)
     puts "As a token of their gratitude, they give you some bread and gloves."
     sleep 1
     puts "You thank them for the gifts and continue your way through the village."
-      current_user.health = 100
-      current_user.defense += 10
-      current_user.attack += 10
   end
 
   def tackle_door(current_user)
@@ -347,6 +349,15 @@ def fourth_scenario(current_user)
     sleep 1 
     puts "You pass out. Game over."
     sleep 1
+  end
+
+  def continue(current_user)
+    prompt = TTY::Prompt.new
+    continue_answer = prompt.select(' ', ["Continue walking"])
+  end
+
+  def continue_prompt(continue_answer, current_user)
+    continue_answer == final_scenario(current_user)
   end
 
   # def outside
@@ -409,6 +420,8 @@ def fourth_scenario(current_user)
       sleep 1
       puts "You continue making your way through the village."
       sleep 1
+
+      continue(current_user)
     end
   end
 

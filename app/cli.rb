@@ -23,9 +23,11 @@ def run_method
   enter_name
   user_name = gets.chomp
   current_user = find_or_add_user(user_name)
-#   space
+  user_stat_table(current_user)
 
-  final_scenario(current_user)
+
+
+#   space
 
 #   puts "====================================================="
 #   element = prompt.select('What is your element?', ["Water", "Earth", "Air"])
@@ -74,7 +76,10 @@ def run_method
 #   second_scenario_fight_prompt1
 #   second_scenario_question1
 
-    # third_scenario(current_user)
+    third_scenario(current_user)
+    # fourth_scenario(current_user)
+    final_scenario(current_user)
+
 
 
 

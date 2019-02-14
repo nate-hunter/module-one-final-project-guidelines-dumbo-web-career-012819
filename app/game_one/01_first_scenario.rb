@@ -28,7 +28,8 @@ def first_scenario_question_two(answer2)
 
   else
     puts "You decide the confrontation isn't worth it and decide to sneak around the soldier."
-    second_fight_prompt1
+    #transition_to_scene_two(game_match)
+    #second_fight_prompt1
   end
 end
 
@@ -40,46 +41,23 @@ def first_fight_question1(first_fight_answer1)
   elsif first_fight_answer1 == "Sneak attack"
     system "clear"
     puts "You bonk the soldier on the head and he falls unconscious"
-    second_fight_prompt1
+    # second_fight_prompt1
   else
     system "clear"
     puts "You successfully ran away"
-    second_fight_prompt1
+    # second_fight_prompt1
   end
-end
-
-def create_match_test(user_id, opponent_id=nil, location)
-  create_match = Match.create(user_id: user_id, opponent_id: opponent_id, location: location, user_win: true)
-  create_match
-end
-
-def create_match(user_id, opponent_id=nil, location)
-
-  match_created = Match.create(user_id: user_id, opponent_id: 1, location: location, user_win: true)
-  match_created
-end
-
-def update_match(match, fight_one_score, num_to_win)
-  if fight_one_score == num_to_win
-    match.user_win = true
-  elsif fight_one_score < num_to_win
-    match.user_win = false
-    puts "You did not win. Peace buddy."
-    puts " "
-  end
-  match
 end
 
 def transition_to_scene_two(updated_match)
   prompt = TTY::Prompt.new
 
   if updated_match.user_win == true
-    sleep (2)
+    sleep (3)
     system 'clear'
     puts "====================================================="
     puts "Congrats on your success thus far, but your village still needs you."
   else
-    # puts "Would you like to star a new game?"
     losing_answer = prompt.select('What would you like to do?', ["Main Menu", "Exit"])
     if losing_answer == "Main Menu"
       welcome

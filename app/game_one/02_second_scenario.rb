@@ -21,7 +21,8 @@ end
 
 def second_scenario_fight_prompt1
   puts "At last, you come across the village's front gate which is guarded by two fire nation soldiers."
-  puts " " 
+  puts " "
+  puts "====================================================="
   puts "They see you and suddenly attack with fire."
   puts " "
   #second_fight_question1

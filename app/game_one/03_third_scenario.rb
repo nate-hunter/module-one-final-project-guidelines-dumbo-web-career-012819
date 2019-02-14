@@ -1,8 +1,8 @@
-def third_scenario(current_user)
-	
+def third_scenario(current_user, game_match)
+
 
 	system "clear"
-	user_stat_table(current_user)
+	# user_stat_table(current_user)
 	puts "You go inside the village and see three items on the ground."
 	sleep 1
 
@@ -13,32 +13,32 @@ def third_scenario(current_user)
 ##############################
 ##############################
 
-	def bread(current_user)
+	def bread(current_user, game_match)
 		system "clear"
 		puts "You've successfully replenished your health!"
 
-		next_prompt(current_user)
+		next_prompt(current_user, game_match)
 	end
 
-	def sword(current_user)
+	def sword(current_user, game_match)
 		system "clear"
 		puts "You've gained a new weapon!"
 		sleep 1
 		puts "Your attack strength successfully increased!"
 
-		next_prompt(current_user)
+		next_prompt(current_user, game_match)
 	end
 
-	def shield(current_user)
+	def shield(current_user, game_match)
 		system "clear"
 		puts "You've gained a new shield!"
 		sleep 1
 		puts "Your defensive strength successfully increased!"
-		
-		next_prompt(current_user)
+
+		next_prompt(current_user, game_match)
 	end
 
-	def notice_soldier(current_user)
+	def notice_soldier(current_user, game_match)
 		system "clear"
 		puts "As you make your way through the village, you see rubble and burning buildings all around."
 		sleep 1
@@ -55,18 +55,19 @@ def third_scenario(current_user)
 		puts "The soldier then turns to see you standing there."
 		sleep 1
 
-		notice_soldier_prompt(current_user)
+		notice_soldier_prompt(current_user, game_match)
 	end
 ################################################################################################
-	def engage_soldier(current_user)
+	def engage_soldier(current_user, game_match)
 		system "clear"
 		puts "Without hesitating, you leap towards the soldier and engage in a battle!"
 		sleep 1
+    binding.pry
+		attack_prompt(current_user, game_match)
 
-		attack_prompt(current_user) 
 	end
 ################################################################################################
-	def call_soldier(current_user)
+	def call_soldier(current_user, game_match)
 		system "clear"
 		puts "You call out to the soldier to stop!"
 		sleep 1
@@ -74,10 +75,10 @@ def third_scenario(current_user)
 		sleep 2
 		puts "You have 3 seconds to respond"
 
-		call_soldier_prompt(current_user)
+		call_soldier_prompt(current_user, game_match)
 	end
 
-	def logic_with_soldier(current_user)
+	def logic_with_soldier(current_user, game_match)
 		system "clear"
 		puts "Being a pacifist, you calmly walk up to the soldier and begin to reason with him."
 		sleep 1
@@ -95,11 +96,11 @@ def third_scenario(current_user)
 		sleep 1
 		puts "He then calmly leaves the village a changed man, before helping an elderly woman who fell."
 		sleep 1
-		
-		next_after_logic_prompt(current_user)
+
+		next_after_logic_prompt(current_user, game_match)
 	end
 
-	def run_away(current_user)
+	def run_away(current_user, game_match)
 		system "clear"
 		puts "The villager isn't worth your time."
 		sleep 1
@@ -110,34 +111,34 @@ def third_scenario(current_user)
 		puts "You pretend to be blind and continue on your way."
 		sleep 1
 
-		next_after_logic_prompt(current_user)
+		next_after_logic_prompt(current_user, game_match)
 	end
 
-	def dodge_attack(current_user)
+	def dodge_attack(current_user, game_match)
 		system "clear"
 		puts "You successfully dodge the attack!"
 		sleep 1
 
-		counter_attack_prompt(current_user)
+		counter_attack_prompt(current_user, game_match)
 	end
 
-	def block_attack(current_user)
+	def block_attack(current_user, game_match)
 		system "clear"
 		puts "You blocked the attack with your bending!"
 		sleep 1
 
-		counter_attack_prompt(current_user)
+		counter_attack_prompt(current_user, game_match)
 	end
 
-	def attack(current_user)
+	def attack(current_user, game_match)
 		system "clear"
 		puts "You attack him!"
 		sleep 1
 
-		attack_prompt(current_user)
+		attack_prompt(current_user, game_match)
 	end
 
-	def run_away_after_attack(current_user)
+	def run_away_after_attack(current_user, game_match)
 		system "clear"
 		puts "His attack was too powerful and you're not sure if you can win."
 		sleep 1
@@ -148,122 +149,151 @@ def third_scenario(current_user)
 		puts "However, it was just a graze and you successfully get away"
 		sleep 1
 
-		next_after_logic_prompt(current_user)
+		next_after_logic_prompt(current_user, game_match)
 	end
 
 ##############################
 ##############################
 ##############################
 
-	def next_prompt(current_user)
+	def next_prompt(current_user, game_match)
 		prompt = TTY::Prompt.new
 		next_answer = prompt.select(' ', ["Continue moving along"])
 
-		next_method(next_answer, current_user)
+		next_method(next_answer, current_user, game_match)
 	end
 
-	def next_after_logic_prompt(current_user)
+	def next_after_logic_prompt(current_user, game_match)
 		prompt = TTY::Prompt.new
 		next_after_logic_answer = prompt.select(' ', ["Continue moving along"])
 
-		next_after_logic_method(next_after_logic_answer, current_user)
+		next_after_logic_method(next_after_logic_answer, current_user, game_match)
 	end
 
-	def notice_soldier_prompt(current_user)
+	def notice_soldier_prompt(current_user, game_match)
 		prompt = TTY::Prompt.new
 		notice_soldier_answer = prompt.select('What do you do?', ["Run up and engage immediately", "Call out and say 'STOP!'", "Try to logically reason with him", "Run away"])
 
-		notice_soldier_method(notice_soldier_answer, current_user)
+		notice_soldier_method(notice_soldier_answer, current_user, game_match)
 	end
 
-	def call_soldier_prompt(current_user)
+	def call_soldier_prompt(current_user, game_match)
 		prompt = TTY::Prompt.new
 		call_soldier_answer = prompt.select('What do you do?', ["Dodge the attack", "Block with your bending"])
 
-		call_soldier_method(call_soldier_answer, current_user)
+		call_soldier_method(call_soldier_answer, current_user, game_match)
 	end
 
-	def counter_attack_prompt(current_user)
+	def counter_attack_prompt(current_user, game_match)
 		prompt = TTY::Prompt.new
 		counter_attack_answer = prompt.select('What do you do?', ["Attack", "Run away"])
 
-		counter_attack_method(counter_attack_answer, current_user)
+		counter_attack_method(counter_attack_answer, current_user, game_match)
 	end
 
-	def attack_prompt(current_user, opponent, user_num, opp_num)
-		rsp_match(current_user, opponent, user_num, opp_num)
+  binding.pry
+  def attack_prompt(current_user, game_match)
+    opponent3 = Opponent.find_by(name: "Captain Yon Rha")
+    game_match
 
-		game_one_score = 0  ## This variable used to track game 1's score
-		opponent4 = Opponent.find_by(name: "Captain Yon Rha")
-		fight_one_score = rsp_match(current_user, opponent4, 3, 4) ## RSP Happening; saved as a variable to use score ##
-		game_one_score += fight_one_score   ## Fight score added to game 1 score.
-		### CREATE A MATCH INSTANCE ###
-		scene3_match1 = create_match(current_user.id, "Game 1, Scene 3")    # new match created
-		match1_id = scene1_match1.id
+    number_user_to_win_s3 = 2
+    number_opp_to_win_s3 = 7
+    game_three_score = 0
+    fight_three_score = rsp_match(current_user, opponent3, number_user_to_win_s3, number_opp_to_win_s3) ## RSP Happening; saved as a variable to use score ##
 
-		updated_match = update_match(scene1_match1, fight_one_score, 3)
+    #************************************************#
+    ### UPDATE TABLES ###
+    game_match = update_match_win_true_or_false(game_match, fight_three_score, number_user_to_win_s3)
+
+    game_three_score += fight_three_score   ## Fight score added to game 1 score.
+
+    current_game_user_score = current_user.total_score += game_three_score
+
+    game_match.update(match_score: current_game_user_score)
+    puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    puts "You scored #{game_three_score} point(s)."
+    puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    puts "You have #{current_game_user_score} total point(s)."
+    puts "•••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    # puts "You won: #{updated_match.user_win}"
+    space
+    #************************************************#
+
+
+
+	# 	rsp_match(current_user, opponent, user_num, opp_num)
+  #
+	# 	game_one_score = 0  ## This variable used to track game 1's score
+	# 	opponent4 = Opponent.find_by(name: "Captain Yon Rha")
+	# 	fight_one_score = rsp_match(current_user, opponent4, 3, 4) ## RSP Happening; saved as a variable to use score ##
+	# 	game_one_score += fight_one_score   ## Fight score added to game 1 score.
+	# 	### CREATE A MATCH INSTANCE ###
+	# 	scene3_match1 = create_match(current_user.id, "Game 1, Scene 3")    # new match created
+	# 	match1_id = scene1_match1.id
+  #
+	# 	updated_match = update_match(scene1_match1, fight_one_score, 3)
 	end
 
 ##############################
 ##############################
 ##############################
 
-	def pick_up_item_method(pick_up_item_answer, current_user)
+	def pick_up_item_method(pick_up_item_answer, current_user, game_match)
 		if pick_up_item_answer == "Bread (replenish health)"
 			current_user.update(health: 100)
-			bread(current_user)
+			bread(current_user, game_match)
 		elsif pick_up_item_answer == "Sword (+10 attack)"
 			current_user.attack += 10
 			current_user.save
-			sword(current_user)
+			sword(current_user, game_match)
 		elsif pick_up_item_answer == "Shield (+10 defense)"
 			current_user.defense += 10
 			current_user.save
-			shield(current_user)
+			shield(current_user, game_match)
 		end
 	end
 
-	def next_method(next_answer, current_user)
+	def next_method(next_answer, current_user, game_match)
 		if next_answer == "Continue moving along"
-			notice_soldier(current_user)
+			notice_soldier(current_user, game_match)
 		end
 	end
 
-	def next_after_logic_method(next_answer, current_user)
+	def next_after_logic_method(next_answer, current_user, game_match)
 	end
 
-	def notice_soldier_method(notice_soldier_answer, current_user)
+	def notice_soldier_method(notice_soldier_answer, current_user, game_match)
 		if notice_soldier_answer == "Run up and engage immediately"
-			engage_soldier(current_user)
+			engage_soldier(current_user, game_match)
 		elsif notice_soldier_answer == "Call out and say 'STOP!'"
-			call_soldier(current_user)
+			call_soldier(current_user, game_match)
 		elsif notice_soldier_answer == "Try to logically reason with him"
-			logic_with_soldier(current_user)
+			logic_with_soldier(current_user, game_match)
 		else
-			run_away(current_user)
+			run_away(current_user, game_match)
 		end
 	end
 
-	def call_soldier_method(call_soldier_answer, current_user)
+	def call_soldier_method(call_soldier_answer, current_user, game_match)
 		if call_soldier_answer == "Dodge the attack"
-			dodge_attack(current_user)
+			dodge_attack(current_user, game_match)
 		else
-			block_attack(current_user)
+			block_attack(current_user, game_match)
 		end
 	end
 
-	def counter_attack_method(counter_attack_answer, current_user)
+	def counter_attack_method(counter_attack_answer, current_user, game_match)
 		if counter_attack_answer == "Attack"
-			attack(current_user)
+			attack(current_user, game_match)
 		else
-			run_away_after_attack(current_user)
+			run_away_after_attack(current_user, game_match)
 		end
 	end
 
 
 
 
-	pick_up_item_method(pick_up_item_answer, current_user)
+	pick_up_item_method(pick_up_item_answer, current_user, game_match)
 	# binding.pry
 
 end

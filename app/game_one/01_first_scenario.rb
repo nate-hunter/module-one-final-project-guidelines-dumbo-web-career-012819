@@ -48,18 +48,12 @@ def first_fight_question1(first_fight_answer1)
   end
 end
 
-def create_match_test(user_id, opponent_id=nil, location)
-  create_match = Match.create(user_id: user_id, opponent_id: opponent_id, location: location, user_win: true)
+def create_match(user_id, opponent_id=nil, location="Village")
+  create_match = Match.create(user_id: user_id, opponent_id: opponent_id, location: location)
   create_match
 end
 
-def create_match(user_id, opponent_id=nil, location)
-
-  match_created = Match.create(user_id: user_id, opponent_id: 1, location: location, user_win: true)
-  match_created
-end
-
-def update_match(match, fight_one_score, num_to_win)
+def update_match_win_true_or_false(match, fight_one_score, num_to_win)
   if fight_one_score == num_to_win
     match.user_win = true
   elsif fight_one_score < num_to_win

@@ -2,7 +2,7 @@ def third_scenario(current_user)
 	
 
 	system "clear"
-	user_stat_table(current_user)
+	# user_stat_table(current_user)
 	puts "You go inside the village and see three items on the ground."
 	sleep 1
 

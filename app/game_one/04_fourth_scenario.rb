@@ -6,6 +6,8 @@ def fourth_scenario(current_user)
 
   def break_door_lock(current_user)
     system "clear"
+    puts user_stats(current_user)
+
     puts "You find a metal pipe nearby and try to break the lock."
     sleep 1
     puts "You smash it a few times but it doesn’t break."
@@ -14,6 +16,7 @@ def fourth_scenario(current_user)
 
   def kick_down_door(current_user)
     system "clear"
+    puts user_stats(current_user)
     puts "You take a few steps back and try to kick the door down."
     sleep 1
     puts "It shakes the door but it doesn’t seem to be working."
@@ -22,6 +25,8 @@ def fourth_scenario(current_user)
 
   def find_another_way(current_user)
     system "clear"
+    puts user_stats(current_user)
+
     puts "You go around the temple in search of another way in."
     sleep 1
     puts "You find a closed window right around the corner."
@@ -32,6 +37,8 @@ def fourth_scenario(current_user)
 
   def go_around(current_user)
     system "clear"
+    puts user_stats(current_user)
+
     puts "The window seems too high to climb. You continue looking for a more suitable entrance."
     sleep 1
     puts "As you run around the temple, you find an open side door."
@@ -48,6 +55,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You look around and find a large rock. You throw the rock and it breaks the window."
     sleep 1
     puts "With a running start, you climb the wall and hang on the window ledge."
@@ -66,6 +76,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You call out for the villagers and their screams become louder."
     sleep 1
     puts "You follow their cries and find them huddled in a corner."
@@ -78,6 +91,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You tell the villagers to stay where they are and you’ll find a safe way to leave the temple."
     sleep 1
     puts "They’re hesitant but agree to stay put."
@@ -96,6 +112,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You tell the villagers to hold hands and follow you."
     sleep 1
     puts "You lead them back the way you came, but all of a sudden, you feel a rumble."
@@ -112,6 +131,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 10
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You jump backwards and the pillar crashes in front of you."
     sleep 1
     puts "The way you came has been blocked."
@@ -133,6 +155,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 10
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You push the villagers out of the way and the pillar crashes between you and the villagers."
     sleep 1
     
@@ -143,6 +168,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 20
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You block the pillar from falling on you with your bending."
     sleep 1
     puts "The pillar is so heavy you strain yourself, but you manage to move it over to the side,"
@@ -159,6 +187,9 @@ def fourth_scenario(current_user)
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You block the pillar with your bending and hold it up."
     sleep 1
     puts "You yell at the villagers to quickly move under the pillar and out to safety."
@@ -183,6 +214,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 10
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You try to move the pillar with your bending, but it’s too heavy."
     sleep 1
     puts "You call to the villagers and tell them to stay where they are."
@@ -195,6 +229,8 @@ def fourth_scenario(current_user)
 
   def give_up(current_user)
     system "clear"
+    puts user_stats(current_user)
+
     puts "The task at hand is too monumental for you."
     sleep 1
     puts "You decide the best course of action is to abandon the villagers and save yourself."
@@ -209,6 +245,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You go back to look for the villagers. You find them hiding in the same corner."
     sleep 1
 
@@ -219,6 +258,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You decide you should check if there are any other surprises along the way."
     sleep 1
     puts "Fortunately, there aren't any and the way out seems clear."
@@ -228,11 +270,14 @@ def fourth_scenario(current_user)
   end
 
   def tell_villagers_to_follow(current_user)
+    system "clear"
       current_user.health = 100
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
-    system "clear"
+
+    puts user_stats(current_user)
+
     puts "You tell the villagers you found a way out and tell them to follow you."
     sleep 1
     puts "They eagerly get up and follow you outside."
@@ -251,6 +296,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 10
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "Unable to move the pillar, you try to destroy it instead."
     sleep 1
     puts "You gather all your remaining strength and attack the pillar."
@@ -265,6 +313,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You follow the sunlight and find a door."
     sleep 1
     puts "You try opening it but it’s locked shut."
@@ -278,6 +329,9 @@ def fourth_scenario(current_user)
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
+
+    puts user_stats(current_user)
+
     system "clear"
     puts "You finally make it outside with the villagers."
     sleep 1
@@ -292,11 +346,14 @@ def fourth_scenario(current_user)
   end
 
   def kick_door(current_user)
+    system "clear"
       current_user.health = 100
       current_user.defense += 10
       current_user.attack += 10
       current_user.save
-    system "clear"
+      
+    puts user_stats(current_user)
+
     puts "You kick the door a few times and it opens. You finally make it out of the temple."
     sleep 1
     puts " "
@@ -311,6 +368,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 5
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You tackle the door with your shoulder a few times but it doesn’t budge."
     sleep 1
 
@@ -321,6 +381,9 @@ def fourth_scenario(current_user)
     system "clear"
       current_user.health -= 15
       current_user.save
+
+    puts user_stats(current_user)
+
     puts "You tackle the door one last time and dislocate your shoulder."
     sleep 1
 
@@ -329,6 +392,9 @@ def fourth_scenario(current_user)
 
   def accept_fate(current_user)
     system "clear"
+
+    puts user_stats(current_user)
+
     puts "Exhausted, injured, and unmotivated, you give up and sit down with your back against the door."
     sleep 1
     puts "You think back to your childhood and question what decisions you had to make to get here."
@@ -341,6 +407,8 @@ def fourth_scenario(current_user)
 
   def look_for_another_way(current_user)
     system "clear"
+    puts user_stats(current_user)
+
     puts "You search for another way out only to find yourself surrounded by a wall of flames."
     sleep 1
     puts "You frantically try to put the fire out to no avail."
@@ -372,6 +440,8 @@ def fourth_scenario(current_user)
   prompt = TTY::Prompt.new
   system "clear"
 
+    puts user_stats(current_user)
+
   puts "You continue making your way through the village and come across a burning temple."
   sleep 1
   puts "You can hear people yelling for help inside."
@@ -402,6 +472,9 @@ def fourth_scenario(current_user)
 
     if intro_prompt_answer == "Run inside and save them"
       system "clear"
+
+      puts user_stats(current_user)
+
       puts "You run up the steps to save the villages. The doors have been chained shut."
       # sleep 1
 
@@ -409,6 +482,8 @@ def fourth_scenario(current_user)
 
     elsif intro_prompt_answer == "Look for water to put out the fire"
       system "clear"
+      puts user_stats(current_user)
+
       puts "You frantically search for water but find nothing. You return to the temple."
       sleep 1
 
@@ -416,6 +491,8 @@ def fourth_scenario(current_user)
 
     else
       system "clear"
+      puts user_stats(current_user)
+
       puts "It’s too dangerous and you need to save your energy in case you run into more trouble."
       sleep 1
       puts "You continue making your way through the village."
@@ -464,6 +541,8 @@ def fourth_scenario(current_user)
     
     if break_temple_lock_answer == "Continue trying"
       system "clear"
+      puts user_stats(current_user)
+
       puts "You can’t give up so soon."
       sleep 1
       puts "With all your might you give the lock one final smash, and it breaks open."
@@ -490,6 +569,9 @@ def fourth_scenario(current_user)
       system "clear"
       current_user.health -= 10
       current_user.save
+
+      puts user_stats(current_user)
+
       puts "You can’t give up so soon."
       sleep 1
       puts "You take a few steps back, run up and try to break the door."
